@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fortpixel", "Assembly-CSharp-firstpass.csproj", "{FAE23BF6-6885-2C63-2977-062837E9CF39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fortpixel", "Assembly-CSharp.csproj", "{CF9DF73F-2B90-5F7C-9301-2E3C58440199}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fortpixel", "Assembly-CSharp-Editor.csproj", "{2F4401E6-C469-58CF-66DC-7076EB227ACE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAE23BF6-6885-2C63-2977-062837E9CF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAE23BF6-6885-2C63-2977-062837E9CF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAE23BF6-6885-2C63-2977-062837E9CF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAE23BF6-6885-2C63-2977-062837E9CF39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF9DF73F-2B90-5F7C-9301-2E3C58440199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9DF73F-2B90-5F7C-9301-2E3C58440199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9DF73F-2B90-5F7C-9301-2E3C58440199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9DF73F-2B90-5F7C-9301-2E3C58440199}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F4401E6-C469-58CF-66DC-7076EB227ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F4401E6-C469-58CF-66DC-7076EB227ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F4401E6-C469-58CF-66DC-7076EB227ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F4401E6-C469-58CF-66DC-7076EB227ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
