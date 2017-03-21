@@ -1,6 +1,9 @@
 MESSLIFE
 ========
 
+**IMPORTANT**: Messlife is being built right now! Feel free to clone and mess around, but it is not a functional online artspace yet. The goal is to get to a public alpha release in April.
+
+
 # About
 
 Messlife is a virtual DIY warehouse for art, music, collaboration. A Temporary Autonomous Zone of the sky.
@@ -9,7 +12,7 @@ This repo contains the working Unity files for building Messlife.
 
 There is a separate repo for [Messcafe](https://github.com/lee2sman/MESSCAFE). Messcafe is the website and tracking pages for building, discussing and contributing to the construction of the Messlife space.
 
-Anyone can contribute to the Messlife artspace. If you are excited about buildign the physical (virtual) artspace, please get in touch here or on the Messcafe site or repo.
+Anyone can contribute to the Messlife artspace. If you are excited about building the physical (virtual) artspace, please get in touch here or on the Messcafe site or repo.
 
 Once opened, Messlife will exist as a space for events like a studio-workshop, talks, parties, concerts, etc. It's an open-ended DIY virtual artspace.
 
