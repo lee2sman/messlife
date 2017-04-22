@@ -4,13 +4,13 @@ using System.Collections;
 
 public class replaceFloorTile : MonoBehaviour {
 
-	void OnMouseOver()
+	public GameObject floor;
+
+
+
+	void Update()
 	{
-		if(Input.GetMouseButtonDown(0))
-		{
-			// NOTE: gameObject.name MUST BE UNIQUE!!!!
-			GetImage.GetImageFromUserAsync(gameObject.name, "ReceiveImage");
-		}
+		
 	}
 
 	static string s_dataUrlPrefix = "data:image/png;base64,";
@@ -20,13 +20,24 @@ public class replaceFloorTile : MonoBehaviour {
 		{
 			byte[] pngData = System.Convert.FromBase64String(dataUrl.Substring(s_dataUrlPrefix.Length));
 
+
+
 			// Create a new Texture (or use some old one?)
 			Texture2D tex = new Texture2D(1, 1); // does the size matter?
 			if (tex.LoadImage(pngData))
 			{
-				Renderer renderer = GetComponent<Renderer>();
+
+
+
+
+				Renderer renderer = floor.GetComponent<Renderer>();
 
 				renderer.material.mainTexture = tex;
+
+
+
+
+
 			}
 			else
 			{

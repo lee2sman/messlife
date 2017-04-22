@@ -1,4 +1,4 @@
-﻿/*
+﻿/*+
  * Copyright 2016, Gregg Tavares.
  * All rights reserved.
  *
@@ -31,31 +31,70 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ClickAndGetImage : MonoBehaviour {
-	[SerializeField] private GameObject WallUnit;
+	[SerializeField] private GameObject WallUnit; 
+	[SerializeField] private GameObject FloorUnit;
 	private GameObject _wallUnit;
+	private GameObject _floorUnit;
+	char Keypressed = '\0';
+
+	public RawImage currentlyLoadedImageCanvasDisplay;
+
 
 
     void Update ()
     {
-		if(Input.GetKeyUp(KeyCode.I))
-        {
-			//Move Instantiate Code Here to Test inside Unity (not in Browser)
 
-
-
-
-            // NOTE: gameObject.name MUST BE UNIQUE!!!!
-		
-            GetImage.GetImageFromUserAsync(gameObject.name, "ReceiveImage");
-
+      if (Input.GetKeyUp(KeyCode.I))
+		{
+            CreateWall();
         }
+		
+
+		if(Input.GetKeyUp(KeyCode.F))
+		{
+			ReplaceFloor ();
+		}
+
+	
+
+		if (Input.GetKeyUp (KeyCode.S)) {
+			//TakeScreenshot ();
+		}
+
+
     }
 
-    static string s_dataUrlPrefix = "data:image/png;base64,";
-    public void ReceiveImage(string dataUrl)
+    public void CreateWall()
     {
+
+        GetImage.GetImageFromUserAsync(gameObject.name, "ReceiveImage");
+        Keypressed = 'I';
+    }
+
+	public void ReplaceFloor()
+	{
+		GetImage.GetImageFromUserAsync(gameObject.name, "ReceiveImage");
+		Keypressed = 'F';
+	}
+
+
+public void TakeScreenshot()
+	{
+
+		Application.ExternalCall ("MessageToBrowser", "saveScreenshot");
+		Debug.LogError("Screenshot happens");
+	}
+
+    static string s_dataUrlPrefix = "data:image/png;base64,";
+   
+
+
+	public void ReceiveImage(string dataUrl)
+    {
+		
         if (dataUrl.StartsWith(s_dataUrlPrefix))
         {
             byte[] pngData = System.Convert.FromBase64String(dataUrl.Substring(s_dataUrlPrefix.Length));
@@ -64,19 +103,31 @@ public class ClickAndGetImage : MonoBehaviour {
             Texture2D tex = new Texture2D(1, 1); // does the size matter?
             if (tex.LoadImage(pngData))
             {
-				//instantiate wall unit here - for use in browser with webGL
-				var angle = Quaternion.LookRotation(this.gameObject.transform.position);
-				//angle *= Quaternion.Euler (0, 0, 90);
+				Renderer renderer;
+				switch (Keypressed) {
+				case 'I':
+					//instantiate wall unit here - for use in browser with webGL
+					var angle = Quaternion.LookRotation(this.gameObject.transform.position);
+					//angle *= Quaternion.Euler (0, 0, 90);
+					_wallUnit = Instantiate(WallUnit, this.gameObject.transform.position + transform.forward*2 + transform.up, angle); //if image loaded, then instantiate a wallUnity
+					_wallUnit.GetComponent<Rigidbody> ().velocity = (transform.forward * 5) + (transform.up * 5);
+					// _wallUnit.GetComponent<Rigidbody> ().AddTorque (new Vector3 (1, 0, 1));
+					// render and wrap begins here
+					renderer = _wallUnit.GetComponent<Renderer>();
+					renderer.material.mainTexture = tex;
 
-				_wallUnit = Instantiate(WallUnit, this.gameObject.transform.position + transform.forward*2 + transform.up, angle); //if image loaded, then instantiate a wallUnity
-				_wallUnit.GetComponent<Rigidbody> ().velocity = (transform.forward * 5) + (transform.up * 5);
-				// _wallUnit.GetComponent<Rigidbody> ().AddTorque (new Vector3 (1, 0, 1));
+
+					break;
+				case 'F':
+					
+						// render and wrap begins here
+					renderer = FloorUnit.GetComponent<Renderer>();
+					renderer.material.mainTexture = tex;
+					break;
+				}
 
 
-				// render and wrap begins here
-                Renderer renderer = _wallUnit.GetComponent<Renderer>();
-
-                renderer.material.mainTexture = tex;
+                
 
             }
             else
